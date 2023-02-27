@@ -12,5 +12,5 @@ public abstract class Shout {
         this.cooldown = cooldown;
     }
 
-    protected abstract void use(Level level, Player player);
+    public abstract void use(Player player, Level level);
 }
