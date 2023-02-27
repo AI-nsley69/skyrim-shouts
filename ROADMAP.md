@@ -19,7 +19,7 @@
 - [ ] Fo Krah Diin (Frost breath): Similiar to cyclone but applies slowness and deals less damage, 100s cooldown
 - [ ] Iiz Slen Nus (Ice Form): Freezes? enemy in range, 120s cooldown
 - [ ] Kaan Drem Ov (Kyne's Peace): Causes enemies to stop attacking for a moment, 60s cooldown
-- [ ] Krii Lun Aus (Marked for Death): Increases damage against inflicted enemies and reduces their attack, 40s cooldown
+- [x] Krii Lun Aus (Marked for Death): Increases damage against inflicted enemies and reduces their attack, 40s cooldown
 - [ ] Tiid Klo Ul (Slow Time): No clue how to implement this one, may just be ignored, undecided cooldown
 - [ ] Rii Vaaz Zol (Soul Tear): Summon a powerful zombie to aid you, 90s cooldown
 - [ ] Strun Bah Qo (Storm Call): Summons multiple lightning strikes on enemies infront of you, otherwise where you are looking, 600s cooldown
