@@ -40,7 +40,7 @@
   "custom": {
     "loom:injected_interfaces": {
       "net/minecraft/class_1657": [
-        "net.trainsley69.skyrimshouts.shouts.ShoutUser"
+        "net/trainsley69/skyrimshouts/shouts/ShoutUser"
       ]
     }
   }
