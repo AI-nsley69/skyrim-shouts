@@ -1,3 +1,10 @@
 {
-  "effect.skyrimshouts.marked_for_death": "Marked For Death"
+  "effect.skyrimshouts.marked_for_death": "Marked For Death",
+
+  "text.autoconfig.skyrim-shouts.title": "Configure Skyrim Shouts",
+
+  "text.autoconfig.skyrim-shouts.option.markedForDeath": "Marked For Death",
+  "text.autoconfig.skyrim-shouts.option.markedForDeath.damageMultiplier": "Damage received multiplier",
+  "text.autoconfig.skyrim-shouts.option.markedForDeath.cooldown": "Cooldown",
+  "text.autoconfig.skyrim-shouts.option.markedForDeath.effectDuration": "Mob effect duration"
 }
