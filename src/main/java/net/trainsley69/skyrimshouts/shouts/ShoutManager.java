@@ -34,12 +34,11 @@ public class ShoutManager {
         }
     }
 
-    public void onKeyPress(Shout shout, Level level) {
+    public static void onKeyPress(Shout shout) {
         if (isShoutOnCooldown(shout)) return;
     }
 
-    private boolean isShoutOnCooldown(Shout shout) {
-
+    private static boolean isShoutOnCooldown(Shout shout) {
         return false;
     }
 }

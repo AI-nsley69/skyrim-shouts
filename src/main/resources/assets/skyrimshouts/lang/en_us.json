@@ -3,6 +3,10 @@
 
   "text.autoconfig.skyrim-shouts.title": "Configure Skyrim Shouts",
 
+  "text.options.first_shout": "First selected shout",
+  "text.options.second_shout": "Second selected shout",
+  "text.options.third_shout": "Third selected shout",
+
   "text.autoconfig.skyrim-shouts.option.markedForDeath": "Marked For Death",
   "text.autoconfig.skyrim-shouts.option.markedForDeath.damageMultiplier": "Damage received multiplier",
   "text.autoconfig.skyrim-shouts.option.markedForDeath.cooldown": "Cooldown",
