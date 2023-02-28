@@ -1,12 +1,10 @@
-package net.trainsley69.skyrimshouts.registry.shouts;
+package net.trainsley69.skyrimshouts.shouts;
 
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 
 import net.trainsley69.skyrimshouts.SkyrimShouts;
-import net.trainsley69.skyrimshouts.registry.ModRegistries;
-import net.trainsley69.skyrimshouts.shouts.MarkedForDeath;
-import net.trainsley69.skyrimshouts.shouts.Shout;
+import net.trainsley69.skyrimshouts.core.ModRegistries;
 
 public class Shouts {
 

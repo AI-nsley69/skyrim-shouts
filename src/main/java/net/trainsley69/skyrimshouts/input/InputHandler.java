@@ -1,15 +1,21 @@
 package net.trainsley69.skyrimshouts.input;
 
-import net.trainsley69.skyrimshouts.registry.ModRegistries;
-import net.trainsley69.skyrimshouts.registry.shouts.Shouts;
-import net.trainsley69.skyrimshouts.shouts.MarkedForDeath;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.entity.player.Player;
+
 import net.trainsley69.skyrimshouts.shouts.ShoutManager;
+import net.trainsley69.skyrimshouts.shouts.Shouts;
 
 public class InputHandler {
+
+    private static Minecraft minecraft = Minecraft.getInstance();
+
     public static void handleKeybinds() {
+        if (minecraft.player == null) return;
+
+        // TODO: do not hardcode
         while (KeyMappings.FIRST_SHOUT.consumeClick()) {
-            // TODO: do not hardcode
-            ShoutManager.onKeyPress(Shouts.MARKED_FOR_DEATH);
+            minecraft.player.getShoutManager().use(Shouts.MARKED_FOR_DEATH);
         }
     }
 }

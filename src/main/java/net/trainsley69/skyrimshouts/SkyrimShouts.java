@@ -1,6 +1,5 @@
 package net.trainsley69.skyrimshouts;
 
-import net.trainsley69.skyrimshouts.shouts.ShoutManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,9 +11,9 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.gui.screens.Screen;
 
 import net.trainsley69.skyrimshouts.config.ShoutsConfig;
-import net.trainsley69.skyrimshouts.registry.ModRegistries;
-import net.trainsley69.skyrimshouts.registry.effects.ShoutMobEffects;
-import net.trainsley69.skyrimshouts.registry.shouts.Shouts;
+import net.trainsley69.skyrimshouts.core.ModRegistries;
+import net.trainsley69.skyrimshouts.shouts.Shouts;
+import net.trainsley69.skyrimshouts.shouts.effects.ShoutMobEffects;
 
 public class SkyrimShouts implements ModInitializer {
     public static final String MOD_ID = "skyrim-shouts";

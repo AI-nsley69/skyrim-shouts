@@ -9,7 +9,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.LivingEntity;
 
 import net.trainsley69.skyrimshouts.SkyrimShouts;
-import net.trainsley69.skyrimshouts.registry.effects.ShoutMobEffects;
+import net.trainsley69.skyrimshouts.shouts.effects.ShoutMobEffects;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {

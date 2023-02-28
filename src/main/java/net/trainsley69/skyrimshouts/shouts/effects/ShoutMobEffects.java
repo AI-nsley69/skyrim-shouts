@@ -1,4 +1,4 @@
-package net.trainsley69.skyrimshouts.registry.effects;
+package net.trainsley69.skyrimshouts.shouts.effects;
 
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;

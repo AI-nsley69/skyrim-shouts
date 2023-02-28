@@ -1,4 +1,4 @@
-package net.trainsley69.skyrimshouts.registry;
+package net.trainsley69.skyrimshouts.core;
 
 import net.fabricmc.fabric.api.event.registry.FabricRegistryBuilder;
 

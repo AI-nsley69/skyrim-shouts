@@ -1,26 +1,24 @@
 package net.trainsley69.skyrimshouts.shouts;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
-import net.trainsley69.skyrimshouts.registry.ModRegistries;
-import net.trainsley69.skyrimshouts.shouts.Shout;
-import net.trainsley69.skyrimshouts.shouts.ShoutInstance;
+import java.util.HashMap;
+import java.util.Map;
 
-import java.util.*;
+import net.minecraft.world.entity.player.Player;
+
+import net.trainsley69.skyrimshouts.core.ModRegistries;
 
 public class ShoutManager {
-    private final HashMap<Shout, ShoutInstance> shoutsOnCooldown = new HashMap();
-    private final Player parent;
+
+    private final Player owner;
+    private final Map<Shout, ShoutInstance> activeShouts = new HashMap<>();
 
     public ShoutManager(Player player) {
-        this.parent = player;
+        this.owner = player;
 
-        List<Shout> shouts = ModRegistries.SHOUT.stream().toList();
-        for (Shout shout : shouts) {
-            if (!isShoutUnlocked(shout)) continue;
-            ShoutInstance instance = new ShoutInstance(shout);
-            shoutsOnCooldown.put(shout, instance);
+        for (Shout type : ModRegistries.SHOUT) {
+            if (this.isShoutUnlocked(type)) {
+                this.activeShouts.put(type, new ShoutInstance(type, this.owner));
+            }
         }
     }
 
@@ -28,17 +26,17 @@ public class ShoutManager {
         return true;
     }
 
-    public void tick(Player player, Level level) {
-        for (ShoutInstance shout : shoutsOnCooldown.values()) {
-            shout.tick();
+    public void use(Shout type) {
+        ShoutInstance shout = this.activeShouts.get(type);
+
+        if (!shout.isOnCooldown()) {
+            type.use(this.owner.level, this.owner);
         }
     }
 
-    public static void onKeyPress(Shout shout) {
-        if (isShoutOnCooldown(shout)) return;
-    }
-
-    private static boolean isShoutOnCooldown(Shout shout) {
-        return false;
+    public void tick() {
+        for (ShoutInstance shout : this.activeShouts.values()) {
+            shout.tick();
+        }
     }
 }

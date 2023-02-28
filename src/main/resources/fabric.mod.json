@@ -35,5 +35,13 @@
     "cloth-config": "*",
     "minecraft": "~1.19.3",
     "java": ">=17"
+  },
+
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/class_1657": [
+        "net.trainsley69.skyrimshouts.shouts.ShoutUser"
+      ]
+    }
   }
 }

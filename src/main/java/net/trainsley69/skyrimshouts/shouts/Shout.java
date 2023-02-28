@@ -18,7 +18,7 @@ public abstract class Shout {
         return 40;
     }
 
-    public abstract void use(Player player, Level level);
+    public abstract void use(Level level, Player player);
 
     public abstract void tick(ShoutInstance instance);
 }
