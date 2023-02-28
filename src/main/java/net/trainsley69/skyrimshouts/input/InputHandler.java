@@ -1,9 +1,8 @@
 package net.trainsley69.skyrimshouts.input;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.player.Player;
 
-import net.trainsley69.skyrimshouts.shouts.ShoutManager;
+import net.trainsley69.skyrimshouts.shouts.ShoutUser;
 import net.trainsley69.skyrimshouts.shouts.Shouts;
 
 public class InputHandler {
@@ -16,7 +15,7 @@ public class InputHandler {
         // TODO: do not hardcode
         while (KeyMappings.FIRST_SHOUT.consumeClick()) {
             // Cast here fixes "cannot find symbol method getShoutManager()" somehow
-            ((Player)minecraft.player).getShoutManager().use(Shouts.MARKED_FOR_DEATH);
+            ((ShoutUser)minecraft.player).getShoutManager().use(Shouts.MARKED_FOR_DEATH);
         }
     }
 }
