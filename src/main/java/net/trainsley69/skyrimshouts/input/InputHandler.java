@@ -15,7 +15,8 @@ public class InputHandler {
 
         // TODO: do not hardcode
         while (KeyMappings.FIRST_SHOUT.consumeClick()) {
-            minecraft.player.getShoutManager().use(Shouts.MARKED_FOR_DEATH);
+            // Cast here fixes "cannot find symbol method getShoutManager()" somehow
+            ((Player)minecraft.player).getShoutManager().use(Shouts.MARKED_FOR_DEATH);
         }
     }
 }
