@@ -1,33 +1,45 @@
 package net.trainsley69.skyrimshouts;
 
-import net.fabricmc.api.ModInitializer;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.MobEffect;
-import net.trainsley69.skyrimshouts.config.Config;
-import net.trainsley69.skyrimshouts.registry.effects.MarkedForDeath;
-import org.intellij.lang.annotations.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+
+import net.fabricmc.api.ModInitializer;
+
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffect;
+
+import net.trainsley69.skyrimshouts.config.ShoutsConfig;
+import net.trainsley69.skyrimshouts.registry.effects.MarkedForDeath;
+
 public class SkyrimShouts implements ModInitializer {
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
-	public static final Logger LOGGER = LoggerFactory.getLogger("skyrim-shouts");
+	public static final String MOD_ID = "skyrim-shouts";
+	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	public static final Config CONFIG = new Config();
-
+	private static ShoutsConfig config;
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
 		Register();
 		LOGGER.info("Dovahkiin. Dragonborn. FUS RO DAH!");
+
+		AutoConfig.register(ShoutsConfig.class, GsonConfigSerializer::new);
+		config = AutoConfig.getConfigHolder(ShoutsConfig.class).get();
+	}
+
+	public static ShoutsConfig getConfig() {
+		if (config == null)
+			throw new IllegalStateException("cannot access the config before it is registered!");
+		return config;
+	}
+
+	public static Screen getConfigScreen(Screen parent) {
+		return AutoConfig.getConfigScreen(ShoutsConfig.class, parent).get();
 	}
 
 	// Registries

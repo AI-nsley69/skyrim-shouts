@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "net.trainsley69.skyrimshouts.SkyrimShouts"
+    ],
+    "modmenu": [
+      "net.trainsley69.skyrimshouts.config.SkyrimShoutsModMenuIntegration"
     ]
   },
   "mixins": [
@@ -29,6 +32,7 @@
   "depends": {
     "fabricloader": ">=0.14.14",
     "fabric-api": "*",
+    "cloth-config": "*",
     "minecraft": "~1.19.3",
     "java": ">=17"
   }
