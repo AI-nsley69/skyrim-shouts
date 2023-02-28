@@ -11,8 +11,9 @@ import net.fabricmc.api.ModInitializer;
 import net.minecraft.client.gui.screens.Screen;
 
 import net.trainsley69.skyrimshouts.config.ShoutsConfig;
-import net.trainsley69.skyrimshouts.registry.effects.SSEffects;
-import net.trainsley69.skyrimshouts.registry.shouts.ShoutsRegistry;
+import net.trainsley69.skyrimshouts.registry.ModRegistries;
+import net.trainsley69.skyrimshouts.registry.effects.ShoutMobEffects;
+import net.trainsley69.skyrimshouts.registry.shouts.Shouts;
 
 public class SkyrimShouts implements ModInitializer {
     public static final String MOD_ID = "skyrim-shouts";
@@ -23,8 +24,10 @@ public class SkyrimShouts implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        this.register();
         LOGGER.info("Dovahkiin. Dragonborn. FUS RO DAH!");
+        ModRegistries.bootstrap();
+        ShoutMobEffects.bootstrap();
+        Shouts.bootstrap();
 
         AutoConfig.register(ShoutsConfig.class, GsonConfigSerializer::new);
         config = AutoConfig.getConfigHolder(ShoutsConfig.class).get();
@@ -38,11 +41,5 @@ public class SkyrimShouts implements ModInitializer {
 
     public static Screen getConfigScreen(Screen parent) {
         return AutoConfig.getConfigScreen(ShoutsConfig.class, parent).get();
-    }
-
-    public void register() {
-        String name = "skyrimshouts";
-        SSEffects.register(name);
-        ShoutsRegistry.create();
     }
 }

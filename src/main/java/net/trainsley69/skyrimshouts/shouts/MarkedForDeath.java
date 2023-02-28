@@ -9,7 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 
 import net.trainsley69.skyrimshouts.SkyrimShouts;
-import net.trainsley69.skyrimshouts.registry.effects.SSEffects;
+import net.trainsley69.skyrimshouts.registry.effects.ShoutMobEffects;
 import net.trainsley69.skyrimshouts.utils.ShoutHelper;
 
 public class MarkedForDeath extends Shout {
@@ -29,7 +29,7 @@ public class MarkedForDeath extends Shout {
             if (entity instanceof LivingEntity) {
                 LivingEntity target = (LivingEntity)entity;
                 int duration = SkyrimShouts.getConfig().markedForDeath.effectDuration * 20;
-                MobEffectInstance mfdEffect = new MobEffectInstance(SSEffects.MFD, duration);
+                MobEffectInstance mfdEffect = new MobEffectInstance(ShoutMobEffects.MARKED_FOR_DEATH, duration);
                 target.addEffect(mfdEffect);
 
                 MobEffectInstance weaknessEffect = new MobEffectInstance(MobEffects.WEAKNESS, duration, 2);

@@ -9,7 +9,7 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.LivingEntity;
 
 import net.trainsley69.skyrimshouts.SkyrimShouts;
-import net.trainsley69.skyrimshouts.registry.effects.SSEffects;
+import net.trainsley69.skyrimshouts.registry.effects.ShoutMobEffects;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
@@ -26,7 +26,7 @@ public class LivingEntityMixin {
     	)
     )
     private float applyMarkedForDeathDamageIncrease(float damage) {
-        if (this.hasEffect(SSEffects.MFD))
+        if (this.hasEffect(ShoutMobEffects.MARKED_FOR_DEATH))
         	return damage * SkyrimShouts.getConfig().markedForDeath.damageMultiplier;
         return damage;
     }
