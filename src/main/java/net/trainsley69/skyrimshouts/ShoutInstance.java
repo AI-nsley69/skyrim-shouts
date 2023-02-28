@@ -8,7 +8,7 @@ public class ShoutInstance {
 
     public ShoutInstance(Shout shout) {
         this.shout = shout;
-        this.cooldown = shout.cooldown;
+        this.cooldown = shout.getCooldown();
     }
 
     public void tick() {
