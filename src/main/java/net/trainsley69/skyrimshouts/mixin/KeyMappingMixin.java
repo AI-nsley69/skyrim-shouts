@@ -13,10 +13,10 @@ import java.util.Map;
 
 @Mixin(KeyMapping.class)
 public class KeyMappingMixin {
-    @Shadow @Final private static Map<String, Integer> CATEGORIES;
+    @Shadow @Final private static Map<String, Integer> CATEGORY_SORT_ORDER;
 
     @Inject(at = @At("RETURN"), method = "<clinit>")
     private static void initKeyMappings(CallbackInfo ci) {
-        CATEGORIES.put(KeyMappings.MAIN, CATEGORIES.size() + 1);
+        CATEGORY_SORT_ORDER.put(KeyMappings.MAIN, CATEGORY_SORT_ORDER.size() + 1);
     }
 }
