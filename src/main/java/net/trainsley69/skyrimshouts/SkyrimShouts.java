@@ -1,5 +1,6 @@
 package net.trainsley69.skyrimshouts;
 
+import net.trainsley69.skyrimshouts.shouts.ShoutManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,7 +19,6 @@ import net.trainsley69.skyrimshouts.registry.shouts.Shouts;
 public class SkyrimShouts implements ModInitializer {
     public static final String MOD_ID = "skyrim-shouts";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-    public static final ShoutManager SHOUT_MANAGER = new ShoutManager();
 
     private static ShoutsConfig config;
 

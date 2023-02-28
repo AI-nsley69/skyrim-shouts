@@ -1,4 +1,4 @@
-package net.trainsley69.skyrimshouts;
+package net.trainsley69.skyrimshouts.shouts;
 
 import net.trainsley69.skyrimshouts.shouts.Shout;
 
@@ -12,7 +12,8 @@ public class ShoutInstance {
     }
 
     public void tick() {
-        this.cooldown--;
+        if (this.cooldown > 0) this.cooldown--;
+        this.shout.tick(this);
     }
 
     public boolean isOnCooldown() {

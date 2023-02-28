@@ -11,9 +11,4 @@ public class MarkedForDeath extends MobEffect {
 
     @Override
     public boolean isDurationEffectTick(int i, int j) { return true; }
-
-    @Override
-    public void applyEffectTick(LivingEntity livingEntity, int i) {
-        if (livingEntity.hurtTime > 5) livingEntity.hurtTime = 5;
-    }
 }

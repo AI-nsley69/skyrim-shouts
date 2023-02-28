@@ -19,4 +19,6 @@ public abstract class Shout {
     }
 
     public abstract void use(Player player, Level level);
+
+    public abstract void tick(ShoutInstance instance);
 }
