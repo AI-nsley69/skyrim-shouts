@@ -9,43 +9,40 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.effect.MobEffect;
 
 import net.trainsley69.skyrimshouts.config.ShoutsConfig;
-import net.trainsley69.skyrimshouts.registry.effects.MarkedForDeath;
+import net.trainsley69.skyrimshouts.registry.effects.SSEffects;
+import net.trainsley69.skyrimshouts.registry.shouts.ShoutsRegistry;
 
 public class SkyrimShouts implements ModInitializer {
-	public static final String MOD_ID = "skyrim-shouts";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final String MOD_ID = "skyrim-shouts";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final ShoutManager SHOUT_MANAGER = new ShoutManager();
 
-	private static ShoutsConfig config;
+    private static ShoutsConfig config;
 
-	@Override
-	public void onInitialize() {
-		Register();
-		LOGGER.info("Dovahkiin. Dragonborn. FUS RO DAH!");
+    @Override
+    public void onInitialize() {
+        this.register();
+        LOGGER.info("Dovahkiin. Dragonborn. FUS RO DAH!");
 
-		AutoConfig.register(ShoutsConfig.class, GsonConfigSerializer::new);
-		config = AutoConfig.getConfigHolder(ShoutsConfig.class).get();
-	}
+        AutoConfig.register(ShoutsConfig.class, GsonConfigSerializer::new);
+        config = AutoConfig.getConfigHolder(ShoutsConfig.class).get();
+    }
 
-	public static ShoutsConfig getConfig() {
-		if (config == null)
-			throw new IllegalStateException("cannot access the config before it is registered!");
-		return config;
-	}
+    public static ShoutsConfig getConfig() {
+        if (config == null)
+            throw new IllegalStateException("cannot access the config before it is registered!");
+        return config;
+    }
 
-	public static Screen getConfigScreen(Screen parent) {
-		return AutoConfig.getConfigScreen(ShoutsConfig.class, parent).get();
-	}
+    public static Screen getConfigScreen(Screen parent) {
+        return AutoConfig.getConfigScreen(ShoutsConfig.class, parent).get();
+    }
 
-	// Registries
-	public static final MobEffect MFD = new MarkedForDeath();
-	public void Register() {
-		String name = "skyrimshouts";
-		Registry.register(BuiltInRegistries.MOB_EFFECT, new ResourceLocation(name, "marked_for_death"), MFD);
-	}
+    public void register() {
+        String name = "skyrimshouts";
+        SSEffects.register(name);
+        ShoutsRegistry.create();
+    }
 }

@@ -9,11 +9,12 @@ import net.trainsley69.skyrimshouts.SkyrimShouts;
 @Config(name = SkyrimShouts.MOD_ID)
 public class ShoutsConfig implements ConfigData {
 
-	@ConfigEntry.Gui.CollapsibleObject
-	public MarkedForDeath markedForDeath = new MarkedForDeath();
+    @ConfigEntry.Gui.CollapsibleObject
+    public MarkedForDeath markedForDeath = new MarkedForDeath();
 
-	public static class MarkedForDeath {
+    public static class MarkedForDeath {
         public float damageMultiplier = 1.2f;
-        public float weaknessMultiplier = 0.8f;
+        public int cooldown = 40;
+        public int effectDuration = 15;
     }
 }

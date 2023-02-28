@@ -4,13 +4,19 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
 public abstract class Shout {
-    public final String name;
-    public final int cooldown;
+    private final String name;
 
-    public Shout(String name, int cooldown) {
+    public Shout(String name) {
         this.name = name;
-        this.cooldown = cooldown;
     }
 
-    protected abstract void use(Level level, Player player);
+    public String getName() {
+        return this.name;
+    }
+
+    public int getCooldown() {
+        return 40;
+    }
+
+    public abstract void use(Player player, Level level);
 }
