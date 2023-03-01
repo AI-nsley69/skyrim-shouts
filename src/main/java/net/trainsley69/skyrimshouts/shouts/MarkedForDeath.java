@@ -1,7 +1,6 @@
 package net.trainsley69.skyrimshouts.shouts;
 
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -30,9 +29,11 @@ public class MarkedForDeath extends Shout {
     }
 
     @Override
-    public InteractionResult use(Level level, Player player) {
+    public InteractionResult use(ShoutInstance instance) {
         int range = 4;
         int radius = 2;
+        Player player = instance.getOwner();
+        Level level = player.getLevel();
         AABB effectArea = ShoutHelper.getEffectAABB(range, radius, player);
 
         if (!level.isClientSide()) {

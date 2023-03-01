@@ -32,8 +32,8 @@ public class ShoutManager {
         ShoutInstance shout = this.activeShouts.get(type);
 
         if (!shout.isOnCooldown()) {
-            InteractionResult result = type.use(this.owner.level, this.owner);
-            if (result == InteractionResult.SUCCESS) shout.use();
+            InteractionResult result = type.use(shout);
+            if (result == InteractionResult.SUCCESS) shout.setCooldown(type.getCooldown());
 
             return result;
         }

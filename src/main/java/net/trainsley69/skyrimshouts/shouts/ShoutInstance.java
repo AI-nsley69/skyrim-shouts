@@ -36,7 +36,7 @@ public class ShoutInstance {
         }
     }
 
-    public void use() {
-        this.cooldown = this.type.getCooldown();
+    public void setCooldown(int cooldown) {
+        this.cooldown = cooldown;
     }
 }
