@@ -3,6 +3,7 @@ package net.trainsley69.skyrimshouts.shouts;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 
 import net.trainsley69.skyrimshouts.core.ModRegistries;
@@ -26,13 +27,18 @@ public class ShoutManager {
         return true;
     }
 
-    public void use(Shout type) {
+    public InteractionResult use(Shout type) {
+        if (!this.activeShouts.containsKey(type)) return InteractionResult.FAIL;
         ShoutInstance shout = this.activeShouts.get(type);
 
         if (!shout.isOnCooldown()) {
-            type.use(this.owner.level, this.owner);
-            shout.use();
+            InteractionResult result = type.use(this.owner.level, this.owner);
+            if (result == InteractionResult.SUCCESS) shout.use();
+
+            return result;
         }
+
+        return InteractionResult.FAIL;
     }
 
     public void tick() {

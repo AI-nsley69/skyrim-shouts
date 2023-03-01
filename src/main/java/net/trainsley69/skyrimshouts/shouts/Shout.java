@@ -1,5 +1,6 @@
 package net.trainsley69.skyrimshouts.shouts;
 
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
@@ -18,7 +19,7 @@ public abstract class Shout {
         return 40;
     }
 
-    public abstract void use(Level level, Player player);
+    public abstract InteractionResult use(Level level, Player player);
 
     public abstract void tick(ShoutInstance instance);
 }

@@ -3,6 +3,7 @@ package net.trainsley69.skyrimshouts.shouts;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,6 +15,7 @@ import net.minecraft.world.phys.Vec3;
 import net.trainsley69.skyrimshouts.SkyrimShouts;
 import net.trainsley69.skyrimshouts.network.NetworkConstants;
 import net.trainsley69.skyrimshouts.network.c2s.ShoutUse;
+import net.trainsley69.skyrimshouts.network.s2c.ShoutStatus;
 import net.trainsley69.skyrimshouts.shouts.effects.ShoutMobEffects;
 import net.trainsley69.skyrimshouts.utils.ShoutHelper;
 
@@ -28,7 +30,7 @@ public class MarkedForDeath extends Shout {
     }
 
     @Override
-    public void use(Level level, Player player) {
+    public InteractionResult use(Level level, Player player) {
         int range = 4;
         int radius = 2;
         AABB effectArea = ShoutHelper.getEffectAABB(range, radius, player);
@@ -44,17 +46,24 @@ public class MarkedForDeath extends Shout {
             }
         } else {
             ClientPlayNetworking.send(NetworkConstants.SHOUT_USE_ID, ShoutUse.pack(this));
-            for (int i = 0; i < 100; i++) {
-                Vec3 look = player.getLookAngle();
-                level.addParticle(ParticleTypes.DRAGON_BREATH,
-                        effectArea.minX + level.getRandom().nextFloat() * (effectArea.maxX - effectArea.minX),
-                        effectArea.minY + level.getRandom().nextFloat() * (effectArea.maxY - effectArea.minY),
-                        effectArea.minZ + level.getRandom().nextFloat() * (effectArea.maxZ - effectArea.minZ),
-                        look.x() / 5, look.y() / 5, look.z() / 5
-                );
-            }
+            ClientPlayNetworking.registerReceiver(NetworkConstants.SHOUT_STATUS_ID, (client, handler, buffer, responseHandler) -> {
+                InteractionResult result = ShoutStatus.unpack(buffer);
+                if (result == InteractionResult.SUCCESS) client.execute(() -> {
+                    for (int i = 0; i < 100; i++) {
+                        Vec3 look = player.getLookAngle();
+                        level.addParticle(ParticleTypes.DRAGON_BREATH,
+                                effectArea.minX + level.getRandom().nextFloat() * (effectArea.maxX - effectArea.minX),
+                                effectArea.minY + level.getRandom().nextFloat() * (effectArea.maxY - effectArea.minY),
+                                effectArea.minZ + level.getRandom().nextFloat() * (effectArea.maxZ - effectArea.minZ),
+                                look.x() / 5, look.y() / 5, look.z() / 5
+                        );
+                    }
+                });
+                ClientPlayNetworking.unregisterReceiver(NetworkConstants.SHOUT_STATUS_ID);
+            });
         }
 
+        return InteractionResult.SUCCESS;
     }
 
     @Override
