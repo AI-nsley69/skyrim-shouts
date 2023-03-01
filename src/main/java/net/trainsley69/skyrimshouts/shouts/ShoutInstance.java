@@ -13,7 +13,7 @@ public class ShoutInstance {
         this.type = type;
         this.owner = owner;
 
-        this.cooldown = type.getCooldown();
+        this.cooldown = 0;
     }
 
     public Shout getType() {
@@ -25,7 +25,7 @@ public class ShoutInstance {
     }
 
     public boolean isOnCooldown() {
-        return this.cooldown > 0;
+        return this.cooldown != 0;
     }
 
     public void tick() {
@@ -34,5 +34,9 @@ public class ShoutInstance {
         } else {
             this.type.tick(this);
         }
+    }
+
+    public void use() {
+        this.cooldown = this.type.getCooldown();
     }
 }

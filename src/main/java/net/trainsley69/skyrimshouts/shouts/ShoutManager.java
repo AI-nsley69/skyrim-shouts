@@ -31,6 +31,7 @@ public class ShoutManager {
 
         if (!shout.isOnCooldown()) {
             type.use(this.owner.level, this.owner);
+            shout.use();
         }
     }
 

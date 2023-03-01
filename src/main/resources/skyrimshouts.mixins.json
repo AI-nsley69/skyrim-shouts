@@ -9,7 +9,8 @@
   ],
   "client": [
     "KeyMappingMixin",
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "OptionsMixin"
   ],
   "injectors": {
     "defaultRequire": 1
