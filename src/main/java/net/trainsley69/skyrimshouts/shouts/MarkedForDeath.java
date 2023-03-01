@@ -1,5 +1,6 @@
 package net.trainsley69.skyrimshouts.shouts;
 
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -11,6 +12,8 @@ import net.minecraft.world.phys.AABB;
 
 import net.minecraft.world.phys.Vec3;
 import net.trainsley69.skyrimshouts.SkyrimShouts;
+import net.trainsley69.skyrimshouts.network.NetworkConstants;
+import net.trainsley69.skyrimshouts.network.c2s.ShoutUse;
 import net.trainsley69.skyrimshouts.shouts.effects.ShoutMobEffects;
 import net.trainsley69.skyrimshouts.utils.ShoutHelper;
 
@@ -26,20 +29,21 @@ public class MarkedForDeath extends Shout {
 
     @Override
     public void use(Level level, Player player) {
-        int range = 3;
+        int range = 4;
         int radius = 2;
         AABB effectArea = ShoutHelper.getEffectAABB(range, radius, player);
 
         if (!level.isClientSide()) {
             for (LivingEntity entity : level.getEntitiesOfClass(LivingEntity.class, effectArea)) {
                 int duration = SkyrimShouts.getConfig().markedForDeath.effectDuration * 20;
-                MobEffectInstance mfdEffect = new MobEffectInstance(ShoutMobEffects.MARKED_FOR_DEATH, duration);
+                MobEffectInstance mfdEffect = new MobEffectInstance(ShoutMobEffects.MARKED_FOR_DEATH, duration, 1);
                 entity.addEffect(mfdEffect);
 
                 MobEffectInstance weaknessEffect = new MobEffectInstance(MobEffects.WEAKNESS, duration, 2);
                 entity.addEffect(weaknessEffect);
             }
         } else {
+            ClientPlayNetworking.send(NetworkConstants.SHOUT_USE_ID, ShoutUse.pack(this));
             for (int i = 0; i < 100; i++) {
                 Vec3 look = player.getLookAngle();
                 level.addParticle(ParticleTypes.DRAGON_BREATH,

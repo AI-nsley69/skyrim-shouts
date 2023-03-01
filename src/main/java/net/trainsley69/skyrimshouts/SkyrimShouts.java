@@ -1,5 +1,6 @@
 package net.trainsley69.skyrimshouts;
 
+import net.trainsley69.skyrimshouts.network.Network;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,6 +28,7 @@ public class SkyrimShouts implements ModInitializer {
         ModRegistries.bootstrap();
         ShoutMobEffects.bootstrap();
         Shouts.bootstrap();
+        Network.bootstrap();
 
         AutoConfig.register(ShoutsConfig.class, GsonConfigSerializer::new);
         config = AutoConfig.getConfigHolder(ShoutsConfig.class).get();
