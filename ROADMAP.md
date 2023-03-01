@@ -7,7 +7,7 @@
 - [ ] Gol Hah Dov (Bend Will): Maybe make entities with a max cap assist you?, 120s cooldown
 - [ ] Od Ah Viing (Call Dragon): Summon a baby? ender dragon to help you, 300s cooldown
 - [ ] Hun Kaal Zoor (Call of Valor): Undecided, Undecided cooldown
-- [ ] Lok Vah Koor (Clear Skies): Remove rain/thunderstorm, 15s cooldown
+- [x] Lok Vah Koor (Clear Skies): Remove rain/thunderstorm, 15s cooldown
 - [ ] Ven Gaar Nos (Cyclone): Wind current that deals damage, 60s cooldown
 - [ ] Zun Haal Viik (Disarm): Reduces damage from weapons to hand damage, 40s cooldown
 - [ ] Faas Ru Maar (Dismay): Cause any entity hit to run away from you, 50s cooldown

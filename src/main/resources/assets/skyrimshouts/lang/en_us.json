@@ -10,5 +10,8 @@
   "text.autoconfig.skyrim-shouts.option.markedForDeath": "Marked For Death",
   "text.autoconfig.skyrim-shouts.option.markedForDeath.damageMultiplier": "Damage received multiplier",
   "text.autoconfig.skyrim-shouts.option.markedForDeath.cooldown": "Cooldown",
-  "text.autoconfig.skyrim-shouts.option.markedForDeath.effectDuration": "Mob effect duration"
+  "text.autoconfig.skyrim-shouts.option.markedForDeath.effectDuration": "Mob effect duration",
+
+  "text.autoconfig.skyrim-shouts.option.clearSkies": "Clear Skies",
+  "text.autoconfig.skyrim-shouts.option.clearSkies.cooldown": "Cooldown"
 }

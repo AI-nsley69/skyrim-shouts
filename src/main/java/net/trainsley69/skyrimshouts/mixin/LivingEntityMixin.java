@@ -17,11 +17,11 @@ public class LivingEntityMixin {
     @Shadow public boolean hasEffect(MobEffect mobEffect) { return false; }
 
     @ModifyVariable(
-    	method= "actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)V",
+    	method = "actuallyHurt(Lnet/minecraft/world/damagesource/DamageSource;F)V",
     	argsOnly = true,
     	index = 2,
     	at = @At(
-    		value = "INVOKE",
+    		value = "HEAD", // Might have to change for 1.19.4
     		target = "Lnet/minecraft/world/damagesource/CombatTracker;recordDamage(Lnet/minecraft/world/damagesource/DamageSource;FF)V"
     	)
     )

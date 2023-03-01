@@ -5,6 +5,7 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 import net.trainsley69.skyrimshouts.SkyrimShouts;
+import net.trainsley69.skyrimshouts.shouts.ClearSkies;
 
 @Config(name = SkyrimShouts.MOD_ID)
 public class ShoutsConfig implements ConfigData {
@@ -14,7 +15,14 @@ public class ShoutsConfig implements ConfigData {
 
     public static class MarkedForDeath {
         public float damageMultiplier = 1.2f;
-        public int cooldown = 40;
+        public int cooldown = 15;
         public int effectDuration = 15;
+    }
+
+    @ConfigEntry.Gui.CollapsibleObject
+    public ClearSkies clearSkies = new ClearSkies();
+
+    public static class ClearSkies {
+        public int cooldown = 60 * 5;
     }
 }
