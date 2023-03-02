@@ -3,23 +3,37 @@ package net.trainsley69.skyrimshouts.input;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
-
 import net.trainsley69.skyrimshouts.shouts.Shout;
-import net.trainsley69.skyrimshouts.shouts.Shouts;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputHandler {
 
-    private static Minecraft minecraft = Minecraft.getInstance();
-    public static List<Shout> selectedShouts = Util.make(new ArrayList<>(3), list -> {
-        list.add(Shouts.MARKED_FOR_DEATH);
-        list.add(Shouts.CLEAR_SKIES);
-    });
+    private static final Minecraft MINECRAFT = Minecraft.getInstance();
+    public static List<Shout> selectedShouts = Util.make(
+            new ArrayList<>(3), InputHandler::initDefaultSelectShouts
+    );
 
+    public static void initDefaultSelectShouts(ArrayList<Shout> list){
+        list.add(null);
+        list.add(null);
+        list.add(null);
+    }
+    public static void addSelectedShout(Shout shout){
+        if(selectedShouts.size() < 3){
+            selectedShouts.add(shout);
+        }
+    }
+
+    public static void assignShout(Shout shout, int index){
+        if(index <= 3){
+            selectedShouts.add(index,shout);
+        }
+
+    }
     public static void handleKeybinds() {
-        Player player = minecraft.player;
+        Player player = MINECRAFT.player;
 
         if (player == null) {
             return;

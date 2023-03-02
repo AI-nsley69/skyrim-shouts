@@ -9,6 +9,6 @@ public class SkyrimShoutsModMenuIntegration implements ModMenuApi {
 
 	@Override
 	public ConfigScreenFactory<?> getModConfigScreenFactory() {
-		return parent -> SkyrimShouts.getConfigScreen(parent);
+		return SkyrimShouts::getConfigScreen;
 	}
 }
