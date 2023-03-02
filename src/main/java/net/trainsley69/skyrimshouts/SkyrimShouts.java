@@ -46,11 +46,11 @@ public class SkyrimShouts implements ModInitializer {
                                         ClientCommandManager.argument("shout", StringArgumentType.word()).executes(
                                                 context -> {
                                                     String shoutName = context.getArgument("shout", String.class);
-                                                    Integer index = context.getArgument("index", Integer.class);
+                                                    Integer shoutIndex = context.getArgument("index", Integer.class);
                                                     Optional<Shout> shout = ModRegistries.SHOUT.getOptional(ResourceLocation.tryParse("skyrim-shouts:" + shoutName));
-                                                    shout.ifPresent(shout1 -> InputHandler.assignShout(shout1,index));
+                                                    shout.ifPresent(shout1 -> InputHandler.assignShout(shout1,shoutIndex));
                                                     shout.ifPresentOrElse(
-                                                            shoutToAssign -> InputHandler.assignShout(shoutToAssign,index),
+                                                            shoutToAssign -> InputHandler.assignShout(shoutToAssign,shoutIndex),
                                                             () -> context.getSource().sendError(Component.literal("not a valid shout"))
                                                     );
                                                     return 1;
