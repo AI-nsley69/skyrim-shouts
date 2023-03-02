@@ -28,11 +28,9 @@ public class ClearSkies extends Shout {
             level.setDayTime(6000);
 
             return InteractionResult.SUCCESS;
-        } else {
-            ClientPlayNetworking.send(NetworkConstants.SHOUT_USE_ID, ShoutUse.pack(this));
         }
 
-        return InteractionResult.FAIL;
+        return InteractionResult.SUCCESS;
     }
 
     @Override

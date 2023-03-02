@@ -46,22 +46,15 @@ public class MarkedForDeath extends Shout {
                 entity.addEffect(weaknessEffect);
             }
         } else {
-            ClientPlayNetworking.send(NetworkConstants.SHOUT_USE_ID, ShoutUse.pack(this));
-            ClientPlayNetworking.registerReceiver(NetworkConstants.SHOUT_STATUS_ID, (client, handler, buffer, responseHandler) -> {
-                InteractionResult result = ShoutStatus.unpack(buffer);
-                if (result == InteractionResult.SUCCESS) client.execute(() -> {
-                    for (int i = 0; i < 100; i++) {
-                        Vec3 look = player.getLookAngle();
-                        level.addParticle(ParticleTypes.DRAGON_BREATH,
-                                effectArea.minX + level.getRandom().nextFloat() * (effectArea.maxX - effectArea.minX),
-                                effectArea.minY + level.getRandom().nextFloat() * (effectArea.maxY - effectArea.minY),
-                                effectArea.minZ + level.getRandom().nextFloat() * (effectArea.maxZ - effectArea.minZ),
-                                look.x() / 5, look.y() / 5, look.z() / 5
-                        );
-                    }
-                });
-                ClientPlayNetworking.unregisterReceiver(NetworkConstants.SHOUT_STATUS_ID);
-            });
+            for (int i = 0; i < 100; i++) {
+                Vec3 look = player.getLookAngle();
+                level.addParticle(ParticleTypes.DRAGON_BREATH,
+                        effectArea.minX + level.getRandom().nextFloat() * (effectArea.maxX - effectArea.minX),
+                        effectArea.minY + level.getRandom().nextFloat() * (effectArea.maxY - effectArea.minY),
+                        effectArea.minZ + level.getRandom().nextFloat() * (effectArea.maxZ - effectArea.minZ),
+                        look.x() / 5, look.y() / 5, look.z() / 5
+                );
+            }
         }
 
         return InteractionResult.SUCCESS;

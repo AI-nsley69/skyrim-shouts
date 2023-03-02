@@ -3,10 +3,13 @@ package net.trainsley69.skyrimshouts.shouts;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 
 import net.trainsley69.skyrimshouts.core.ModRegistries;
+import net.trainsley69.skyrimshouts.network.NetworkConstants;
+import net.trainsley69.skyrimshouts.network.c2s.ShoutUse;
 
 public class ShoutManager {
 
@@ -28,6 +31,16 @@ public class ShoutManager {
     }
 
     public InteractionResult use(Shout type) {
+        if (this.owner.getLevel().isClientSide()) return use(type, false);
+        else return use(type, true);
+    }
+
+    public InteractionResult use(Shout type, boolean isAuthorized) {
+        if (!isAuthorized) {
+            ClientPlayNetworking.send(NetworkConstants.SHOUT_USE_ID, ShoutUse.pack(type));
+            return InteractionResult.PASS;
+        }
+
         if (!this.activeShouts.containsKey(type)) return InteractionResult.FAIL;
         ShoutInstance shout = this.activeShouts.get(type);
 
@@ -39,6 +52,10 @@ public class ShoutManager {
         }
 
         return InteractionResult.FAIL;
+    }
+
+    public void clientUse(Shout type) {
+
     }
 
     public void tick() {
