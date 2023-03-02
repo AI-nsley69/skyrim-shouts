@@ -13,9 +13,7 @@ public abstract class Shout {
         return this.name;
     }
 
-    public int getCooldown() {
-        return 40;
-    }
+    public abstract int getCooldown();
 
     public abstract InteractionResult use(ShoutInstance instance);
 

@@ -24,6 +24,7 @@ public class MarkedForDeath extends Shout {
         super("Marked For Death");
     }
 
+    @Override
     public int getCooldown() {
         return 20 * SkyrimShouts.getConfig().markedForDeath.cooldown;
     }

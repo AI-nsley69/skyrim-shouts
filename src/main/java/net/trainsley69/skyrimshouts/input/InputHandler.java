@@ -35,14 +35,24 @@ public class InputHandler {
 
         // TODO: do not hardcode
         while (KeyMappings.FIRST_SHOUT.consumeClick()) {
-            // Cast here fixes "cannot find symbol method getShoutManager()" somehow
-            // player.getShoutManager().use(selectedShouts.get(0));
-            player.getShoutManager().use(selectedShoutsArray[0]);
+            int index = 0;
+            runShout(player, index);
         }
 
         while (KeyMappings.SECOND_SHOUT.consumeClick()) {
-            // player.getShoutManager().use(selectedShouts.get(1));
-            player.getShoutManager().use(selectedShoutsArray[1]);
+            int index = 1;
+            runShout(player, index);
         }
+
+        while (KeyMappings.THIRD_SHOUT.consumeClick()) {
+            int index = 2;
+            runShout(player, index);
+        }
+    }
+
+    private static void runShout(Player player, int i) {
+        if (selectedShoutsArray[i] == null) return;
+        Shout type = selectedShoutsArray[i];
+        player.getShoutManager().use(type);
     }
 }

@@ -13,5 +13,9 @@
   "text.autoconfig.skyrim-shouts.option.markedForDeath.effectDuration": "Mob effect duration",
 
   "text.autoconfig.skyrim-shouts.option.clearSkies": "Clear Skies",
-  "text.autoconfig.skyrim-shouts.option.clearSkies.cooldown": "Cooldown"
+  "text.autoconfig.skyrim-shouts.option.clearSkies.cooldown": "Cooldown",
+
+  "text.autoconfig.skyrim-shouts.option.auraWhisper": "Aura Whisper",
+  "text.autoconfig.skyrim-shouts.option.auraWhisper.cooldown": "Cooldown",
+  "text.autoconfig.skyrim-shouts.option.auraWhisper.duration": "Mob effect duration"
 }

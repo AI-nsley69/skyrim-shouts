@@ -10,6 +10,7 @@ public class Shouts {
 
     public static final MarkedForDeath MARKED_FOR_DEATH = register("marked_for_death", new MarkedForDeath());
     public static final ClearSkies CLEAR_SKIES = register("clear_skies", new ClearSkies());
+    public static final AuraWhisper AURA_WHISPER = register("aura_whisper", new AuraWhisper());
 
     private static <T extends Shout> T register(String name, T shout) {
         return Registry.register(ModRegistries.SHOUT, new ResourceLocation(SkyrimShouts.MOD_ID, name), shout);

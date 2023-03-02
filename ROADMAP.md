@@ -1,7 +1,7 @@
 # ROADMAP
 ### Shouts
 - [ ] Raan Mir Tah (Animal Allegiance): Call for an animal to aid you in battle, 70s cooldown
-- [ ] Laas Yah Nir (Aura Whisper): Highlight surrounding entities, 15s cooldown
+- [x] Laas Yah Nir (Aura Whisper): Highlight surrounding entities, 15s cooldown
 - [ ] Mid Vur Shaan (Battle Fury): Increase nearby allies' attack speed or attack damage, 50s cooldown
 - [ ] Feim Zii Gron (Become Ethereal): Temporarily turn invincible with the inability to attack, 40s cooldown
 - [ ] Gol Hah Dov (Bend Will): Maybe make entities with a max cap assist you?, 120s cooldown

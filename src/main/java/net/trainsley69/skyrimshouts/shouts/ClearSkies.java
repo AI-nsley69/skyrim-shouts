@@ -3,6 +3,7 @@ package net.trainsley69.skyrimshouts.shouts;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.trainsley69.skyrimshouts.SkyrimShouts;
 import net.trainsley69.skyrimshouts.network.NetworkConstants;
@@ -15,6 +16,7 @@ public class ClearSkies extends Shout {
         super("Clear Skies");
     }
 
+    @Override
     public int getCooldown() {
         return 20 * SkyrimShouts.getConfig().clearSkies.cooldown;
     }
